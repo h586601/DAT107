@@ -1,0 +1,9 @@
+INDEX VERSION 1.131+C:\Ida\Skole\Vår 2020\DAT107 Databaser\JPA\.metadata\.plugins\org.eclipse.jdt.core
+3196597579.index
+3801557082.index
+2067469890.index
+1859533453.index
+4287631203.index
+2744062578.index
+3375948699.index
+1669892228.index
