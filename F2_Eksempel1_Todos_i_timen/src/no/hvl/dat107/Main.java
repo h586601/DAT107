@@ -18,6 +18,7 @@ public class Main {
 		 * d) Legge til en ny todo med pk=4 
 		 * e) Slette todo med pk=4 
 		 * f) Endre tekst på todo med pk=3
+		 * g) Endre tekst på todo med pk=3, alternativ måte
 		 */
 
 		// Hjelpeklasse for å snakke med databasen
@@ -31,10 +32,10 @@ public class Main {
 		System.out.println("   " + todoa);
 
 //		// b)
-//		List<Todo> todosb = todoDAO.finnAlleTodos();
+//		List<Todo> alleTodos = todoDAO.finnAlleTodos();
 //		
 //		System.out.println("\nb) Hente ut alle todos");
-//		System.out.println("   " + todosb);
+//		alleTodos.forEach(t -> System.out.println("   " + t));
 //
 //		// c)
 //		List<Todo> todosc = todoDAO.finnTodosMedTekst("Handle mat");
@@ -77,6 +78,17 @@ public class Main {
 //		System.out.println("   " + todof2);
 //
 //		pauseOgSjekkDatabasen("\nSjekk at rad med id=3 har fått oppdatert klokkeslett i tekst.");
+//
+//		// g)
+//		System.out.println("\ng) Endre tekst på todo med pk=3, alternativ måte");
+//
+//		todoDAO.oppdaterTekst(3, "Jobbe med DAT107-oblig");
+//
+//		Todo todog = todoDAO.finnTodoMedPk(3);
+//		System.out.println("   Henter ut todo med pk=3");
+//		System.out.println("   " + todog);
+//
+//		pauseOgSjekkDatabasen("\nSjekk at rad med id=3 har fått oppdatert tekst til 'Jobbe med DAT107-oblig'.");
 
 		System.out.println("\nProgrammet er ferdig! :)");
 	}
