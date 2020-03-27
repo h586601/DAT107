@@ -26,7 +26,7 @@ public class TodoDAO {
 		EntityManager em = emf.createEntityManager();
 
 		try {
-			return null; // TODO ???
+			return em.find(Todo.class, pk);
 
 		} finally {
 			em.close();
@@ -41,7 +41,8 @@ public class TodoDAO {
 		EntityManager em = emf.createEntityManager();
 		
 		try {
-			return null; // TODO ???
+			TypedQuery<Todo> query = em.createQuery("SELECT t from Todo t", Todo.class);
+			return query.getResultList();
 		
 		} finally {
 			em.close();
@@ -75,7 +76,7 @@ public class TodoDAO {
 		try {
 			tx.begin();
 			
-			// TODO ???
+			em.persist(todony);
 			
 			tx.commit();
 
@@ -100,7 +101,8 @@ public class TodoDAO {
 		try {
 			tx.begin();
 			
-			// TODO ???
+			Todo todo = em.find(Todo.class, pk);
+			em.remove(todo);
 			
 			tx.commit();
 
@@ -125,8 +127,30 @@ public class TodoDAO {
 		try {
 			tx.begin();
 			
-			// TODO ???
+			em.merge(todo);
 			
+			tx.commit();
+		} catch (Throwable e) {
+			e.printStackTrace();
+			if (tx.isActive()) {
+				tx.rollback();
+			}
+		} finally {
+			em.close();
+		}
+	}
+
+	public void oppdaterTekst(int id, String nyTekst) {
+		
+		EntityManager em = emf.createEntityManager();
+		EntityTransaction tx = em.getTransaction();
+		
+		try {
+			tx.begin();
+			
+			Todo todo = em.find(Todo.class, id);
+			todo.setTekst(nyTekst);
+						
 			tx.commit();
 		} catch (Throwable e) {
 			e.printStackTrace();
