@@ -1,4 +1,4 @@
--- SQL for en-til-mange-eksemplet gjennomgått i timen tirsdag 26. mars 2019 
+-- SQL for en-til-mange-eksemplet gjennomgått i timen tirsdag 31. mars 2020 
 
 DROP SCHEMA IF EXISTS forelesning3 CASCADE;
 CREATE SCHEMA forelesning3;

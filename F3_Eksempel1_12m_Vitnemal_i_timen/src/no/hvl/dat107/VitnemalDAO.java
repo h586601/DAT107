@@ -20,12 +20,11 @@ public class VitnemalDAO {
         EntityManager em = emf.createEntityManager();
 
         try {
-        	// TODO
+        	return em.find(Vitnemal.class, studNr);
 
         } finally {
             em.close();
         }
-    	return null;
     }
 
     public Karakter registrerKarakterForStudent(int studNr, String emnekode, 
@@ -34,10 +33,19 @@ public class VitnemalDAO {
         EntityManager em = emf.createEntityManager();
         EntityTransaction tx = em.getTransaction();
         
+        Karakter k = null;
+        
         try {
             tx.begin();
             
-        	// TODO
+//            Vitnemal v = finnVitnemalForStudent(studNr);  // v er her detached fra pc!
+            Vitnemal v = em.find(Vitnemal.class, studNr); // v er her managed i pc !
+            
+            k = new Karakter(emnekode, eksDato, bokstav, v);
+            
+            em.persist(k);
+            
+            v.addKarakter(k);
             
             tx.commit();
             
@@ -48,7 +56,7 @@ public class VitnemalDAO {
         } finally {
             em.close();
         }
-    	return null;
+        return k;
     }
 
     public Karakter finnKarakter(int studNr, String emnekode) {

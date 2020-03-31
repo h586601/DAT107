@@ -9,7 +9,7 @@ public class BelopSomDouble {
 
         double fireKroner = fireKronerOgTiOre - tiOre;
 
-        // Hva blir skrevet ut på skjermen?
+        // Hva blir skrevet ut pÃ¥ skjermen?
         System.out.println(fireKronerOgTiOre);
         System.out.println(tiOre);
         System.out.println(fireKroner);

@@ -9,8 +9,11 @@ public class Main2 {
         Person lars = new Person();
         lars.setNavn("Lars");
         System.out.println(lars);
-        personDAO.savePerson(lars);
+        
+        int id = personDAO.savePerson(lars);
         System.out.println(lars);
+        
+        System.out.println("Returnert ID: " + id);
     }
 
 }
