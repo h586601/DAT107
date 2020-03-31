@@ -55,6 +55,26 @@ public class TodoDAO {
 	 * @param tekst
 	 * @return
 	 */
+	public Todo finnTodoMedTekst(String tekst) {
+		
+		EntityManager em = emf.createEntityManager();
+		
+		try {
+			TypedQuery<Todo> query = em.createQuery(
+					"SELECT t FROM Todo t WHERE t.tekst LIKE :tekst", Todo.class);
+			query.setParameter("tekst", tekst);
+			
+			return query.getSingleResult(); //NB! Exception hvis ingen eller flere resultater
+		
+		} finally {
+			em.close();
+		}
+	}
+	
+	/**
+	 * @param tekst
+	 * @return
+	 */
 	public List<Todo> finnTodosMedTekst(String tekst) {
 		
 		EntityManager em = emf.createEntityManager();
@@ -64,7 +84,7 @@ public class TodoDAO {
 					"SELECT t FROM Todo t WHERE t.tekst LIKE :tekst", Todo.class);
 			query.setParameter("tekst", tekst);
 			
-			return query.getResultList();
+			return query.getResultList(); //NB! Tom liste hvis ingen resultat
 		
 		} finally {
 			em.close();
