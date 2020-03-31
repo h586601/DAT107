@@ -26,6 +26,11 @@ public class Main {
 		
 		System.out.println("\n### Vitnemål for student 123456:");
 		vitnemal.skrivUt();
+
+		Karakter dat102Karakter = vitnemalDAO.finnKarakter(123456, "DAT102");	
+		
+		System.out.println("\n### Karakter i DAT102 for student 123456:");
+		System.out.println(dat102Karakter);
 	}
 
 }
