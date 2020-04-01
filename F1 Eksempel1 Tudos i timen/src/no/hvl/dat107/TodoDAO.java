@@ -10,7 +10,7 @@ import javax.persistence.TypedQuery;
 
 /**
  * @author lph-lokal
- *
+ * DataAccessObject
  */
 public class TodoDAO {
 	
@@ -48,6 +48,22 @@ public class TodoDAO {
 			em.close();
 		}
 	}
+	
+	public Todo finnTodoMedTekst(String tekst) {
+		
+		EntityManager em = emf.createEntityManager();
+		
+		try {
+			TypedQuery<Todo> query = em.createQuery(
+					"SELECT t FROM Todo t WHERE t.tekst LIKE :tekst", Todo.class);
+			query.setParameter("tekst", tekst);
+			
+			return query.getSingleResult(); //NB! Exception hvis ingen eller flere resultater
+		
+		} finally {
+			em.close();
+		}
+	}
 
 	/**
 	 * @param tekst
@@ -58,7 +74,11 @@ public class TodoDAO {
 		EntityManager em = emf.createEntityManager();
 		
 		try {
-			return null; // TODO ???
+			TypedQuery<Todo> query = em.createQuery(
+					"SELECT t FROM Todo t WHERE t.tekst LIKE :tekst", Todo.class);
+			query.setParameter("tekst", tekst);
+			
+			return query.getResultList(); //NB! Tom liste hvis ingen resultat
 		
 		} finally {
 			em.close();

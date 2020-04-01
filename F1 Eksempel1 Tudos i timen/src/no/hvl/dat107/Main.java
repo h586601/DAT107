@@ -11,9 +11,17 @@ public class Main {
 	public static void main(String[] args) {
 
 		/*
-		 * Ting å prøve: a) Hente ut todo med pk=2 b) Hente ut alle todos c) Hente ut
-		 * todo med tekst="Handle mat" d) Legge til en ny todo med pk=4 e) Slette todo
-		 * med pk=4 f) Endre tekst på todo med pk=3 g) Endre tekst på todo med pk=3,
+		 * Ting å prøve: 
+		 * a) Hente ut todo med pk=2 
+		 * b) Hente ut alle todos 
+		 * c.i)	Hente ut SINGLE todo med tekst="Handle mat" 
+		 * c.ii) Hente ut SINGLE todo med tekst="Vaske bilen" (som ikke finnes)
+		 * c.iii) Hente ut LISTE av todos med tekst="Handle mat"
+		 * c.iv) Hente ut LISTE av todos med tekst= "Vaske bilen" (som ikke finnes)
+		 * d) Legge til en ny todo med pk=4 
+		 * e) Slette todo med pk=4 
+		 * f) Endre tekst på todo med pk=3 
+		 * g) Endre tekst på todo med pk=3,
 		 * alternativ måte
 		 */
 
@@ -33,12 +41,20 @@ public class Main {
 		System.out.println("\nb) Hente ut alle todos");
 		System.out.println("   " + todosb);
 
-//		// c)
-//		List<Todo> todosc = todoDAO.finnTodosMedTekst("Handle mat");
-//		
-//		System.out.println("\nc) Hente ut todo med tekst=\"Handle mat\"");
-//		System.out.println("   " + todosc);
-//
+		// c)
+		System.out.println("\nc) Hente ut litt forskjellig");
+		Todo todoci = todoDAO.finnTodoMedTekst("Handle mat");
+		System.out.println("   " + todoci);
+		
+//		Todo todocii = todoDAO.finnTodoMedTekst("Vaske bilen");
+//		System.out.println(todocii);
+		
+		List<Todo> todociii = todoDAO.finnTodosMedTekst("Handle mat");
+		System.out.println("   " + todociii);
+		
+		List<Todo> todociv = todoDAO.finnTodosMedTekst("Vaske bilen");
+		System.out.println("   " + todociv);
+
 		// d)
 		System.out.println("\nd) Legge til en ny todo med pk=4");
 
